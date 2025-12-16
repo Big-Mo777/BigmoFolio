@@ -197,8 +197,8 @@ portfolio-bigmo/
 ## Support et Contact
 
 Pour toute question ou suggestion :
-- Email : bigmo@example.com
-- GitHub : [@bigmo](https://github.com/bigmo)
+- Email : bigmomomo07@gmail.com 
+- GitHub : [@Big-Mo777](https://github.com/Big-Mo777)
 
 ## Licence
 
