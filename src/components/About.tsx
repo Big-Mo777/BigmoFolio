@@ -25,10 +25,10 @@ export default function About() {
   ];
 
   return (
-    <section id="apropos" className="py-20 bg-white">
+    <section id="apropos" className="py-20 bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             À propos de moi
           </h2>
           <div className="w-20 h-1 bg-cyan-600 mx-auto"></div>
@@ -36,25 +36,25 @@ export default function About() {
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
-            <div className="aspect-square bg-gradient-to-br from-cyan-100 to-gray-100 rounded-2xl flex items-center justify-center">
+            <div className="aspect-square bg-gradient-to-br from-cyan-100 to-gray-100 dark:from-cyan-900/30 dark:to-gray-900 rounded-2xl flex items-center justify-center">
               <div className="text-center">
                 <div className="text-8xl mb-4">👨‍💻</div>
-                <div className="text-2xl font-bold text-gray-900">Bigmo</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">Bigmo</div>
               </div>
             </div>
           </div>
 
           <div>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
               Passionné par le développement web depuis plusieurs années, je me spécialise dans la création
               d'applications modernes et performantes qui résolvent des problèmes concrets.
             </p>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
               Mon approche combine expertise technique et vision business pour créer des solutions
               qui génèrent de la valeur réelle. Je ne me contente pas d'écrire du code : je construis
               des produits qui fonctionnent.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               Que vous soyez une startup qui lance son MVP ou une entreprise établie qui modernise
               son infrastructure, je mets mon expertise à votre service pour concrétiser votre vision.
             </p>
@@ -65,13 +65,13 @@ export default function About() {
           {values.map((value, index) => (
             <div
               key={index}
-              className="p-6 bg-gray-50 rounded-xl hover:bg-cyan-50 transition-colors duration-200 border border-gray-200"
+              className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-cyan-50 dark:hover:bg-gray-800 transition-colors duration-200 border border-gray-200 dark:border-gray-800"
             >
               <div className="w-12 h-12 bg-cyan-600 text-white rounded-lg flex items-center justify-center mb-4">
                 {value.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{value.description}</p>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{value.title}</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{value.description}</p>
             </div>
           ))}
         </div>

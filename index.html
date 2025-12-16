@@ -8,6 +8,15 @@
     <meta property="og:image" content="https://bolt.new/static/og_default.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
+    <script>
+      (() => {
+        const s = localStorage.getItem('theme');
+        const m = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const d = s ? s === 'dark' : m;
+        const el = document.documentElement;
+        if (d) el.classList.add('dark'); else el.classList.remove('dark');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

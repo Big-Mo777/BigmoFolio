@@ -45,14 +45,14 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projets" className="py-20 bg-white">
+    <section id="projets" className="py-20 bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Projets réalisés
           </h2>
           <div className="w-20 h-1 bg-cyan-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Une sélection de mes réalisations qui démontrent mon expertise technique et ma capacité à livrer des solutions complètes
           </p>
         </div>
@@ -61,18 +61,18 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col"
+              className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-800 flex flex-col"
             >
               <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
                 <div className="text-white text-6xl">💻</div>
               </div>
 
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-600 mb-4 leading-relaxed flex-1">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed flex-1">
                   {project.description}
                 </p>
 
@@ -80,7 +80,7 @@ export default function Projects() {
                   {project.stack.map((tech, techIdx) => (
                     <span
                       key={techIdx}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full font-medium"
+                      className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full font-medium"
                     >
                       {tech}
                     </span>
@@ -97,7 +97,7 @@ export default function Projects() {
                   </a>
                   <a
                     href={project.githubUrl}
-                    className="flex items-center justify-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                    className="flex items-center justify-center px-4 py-2 bg-gray-900 dark:bg-gray-800 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
                   >
                     <Github size={20} />
                   </a>
