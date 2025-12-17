@@ -43,6 +43,14 @@ export default function Projects() {
       githubUrl: '#',
       gradient: 'from-gray-700 to-gray-900',
     },
+    {
+      title: 'Banque d\'Images',
+      description: 'Plateforme de stockage et partage d\'images avec authentification, galerie d\'images, et fonctionnalités de recherche avancée.',
+      stack: ['React', 'laravel', 'MySQL', 'JWT'],
+      liveUrl: "https://illuxtra.soarstartup.com/",
+      githubUrl: 'https://github.com/Big-Mo777/Illuxtra',
+      gradient: 'from-yellow-500 to-orange-500',
+    }
   ];
 
   const [preview, setPreview] = useState<{ url: string; title: string } | null>(null);
