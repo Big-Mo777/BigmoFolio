@@ -9,35 +9,35 @@ import shotFadulTask from './images/Capture d’écran_17-12-2025_113928_fadul-t
 export default function Projects() {
   const projects = [
     {
-      title: 'Application de Messagerie Instantanée',
-      description: 'Plateforme de chat en temps réel avec authentification sécurisée, salons de discussion et notifications push. Architecture scalable supportant des milliers d\'utilisateurs simultanés.',
-      stack: ['React', 'Node.js', 'WebSocket', 'PostgreSQL', 'JWT'],
+      title: 'Application de messagerie instantanée',
+      description: 'Messagerie temps réel avec authentification, WebSocket, API REST et blocage de contacts.',
+      stack: ['Node.js', 'Go (Gin)', 'PostgreSQL', 'JWT'],
       liveUrl: '#',
       githubUrl: '#',
       gradient: 'from-cyan-500 to-blue-500',
     },
     {
-      title: 'Plateforme E-commerce',
-      description: 'Solution e-commerce complète avec gestion de catalogue produits, panier d\'achat, système de paiement sécurisé et tableau de bord administrateur.',
-      stack: ['Vue.js', 'Django', 'PostgreSQL', 'Stripe', 'Tailwind'],
+      title: 'Application e-commerce',
+      description: 'Plateforme avec gestion de produits, panier et commandes. Structuration propre de l’API.',
+      stack: ['React', 'Node.js', 'PostgreSQL'],
       liveUrl: 'https://project-ecommerce-rho-jet.vercel.app/',
       githubUrl: 'https://github.com/Big-Mo777/project_ecommerce',
       gradient: 'from-green-500 to-emerald-500',
     },
     {
-      title: 'Application web de Jeu',
-      description: 'Jeu interactif web avec système de score en temps réel, classements, achievements et expérience utilisateur fluide.',
-      stack: ['React Native', 'Go (Gin)', 'MySQL', 'WebSocket'],
+      title: 'Reflex Click Challenge',
+      description: 'Jeu web interactif basé sur la rapidité. Gère l’état, les scores et les animations UI.',
+      stack: ['React', 'Tailwind CSS', 'Vercel'],
       liveUrl: 'https://reflex-click-challenge-mvp.vercel.app/',
       githubUrl: 'https://github.com/Big-Mo777/Reflex_Click_Challenge_MVP',
       gradient: 'from-orange-500 to-red-500',
     },
     {
-      title: 'To-Do List Intelligente',
-      description: 'Application de gestion de tâches avec authentification, catégorisation intelligente, rappels et synchronisation multi-appareils.',
-      stack: ['React', 'Node.js', 'superbase', 'JWT'],
-      liveUrl: 'https://fadul-task.vercel.app/',
-      githubUrl: 'https://github.com/Big-Mo777/FadulTask',
+      title: 'Portfolio personnel',
+      description: 'Mon portfolio en ligne, optimisé pour performance, design et conversion.',
+      stack: ['React / Next.js', 'Tailwind CSS'],
+      liveUrl: '#',
+      githubUrl: '#',
       gradient: 'from-purple-500 to-pink-500',
     },
     {
@@ -155,7 +155,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-800 flex flex-col"
+              className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-800 flex flex-col hover:-translate-y-1 hover:scale-[1.01]"
             >
               <PreviewWindow
                 url={project.liveUrl}
@@ -192,15 +192,16 @@ export default function Projects() {
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors font-medium"
                   >
                     <ExternalLink size={16} />
-                    Voir le site
+                    Voir le projet
                   </a>
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center px-4 py-2 bg-gray-900 dark:bg-gray-800 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-800 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
                   >
                     <Github size={20} />
+                    <span className="text-sm font-medium">Voir code</span>
                   </a>
                 </div>
               </div>

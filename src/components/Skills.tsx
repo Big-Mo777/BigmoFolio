@@ -1,23 +1,22 @@
+import { Code2, Server, ShieldCheck, Database, GitBranch, Cloud, Wind, Code } from 'lucide-react';
+
 export default function Skills() {
   const skillCategories = [
     {
       category: 'Frontend',
       skills: [
         { name: 'React', level: 90 },
-        { name: 'Vue.js', level: 85 },
+        { name: 'Next.js', level: 85 },
         { name: 'Tailwind CSS', level: 95 },
-        { name: 'JavaScript', level: 90 },
-        { name: 'HTML/CSS', level: 95 },
+        { name: 'HTML / CSS / JavaScript', level: 95 },
       ],
     },
     {
       category: 'Backend',
       skills: [
         { name: 'Node.js', level: 85 },
-        { name: 'Go (Gin)', level: 80 },
-        { name: 'Django', level: 75 },
         { name: 'API REST', level: 90 },
-        { name: 'WebSocket', level: 80 },
+        { name: 'JWT / Auth', level: 85 },
       ],
     },
     {
@@ -28,14 +27,42 @@ export default function Skills() {
       ],
     },
     {
-      category: 'Outils & Autres',
+      category: 'Autres',
       skills: [
         { name: 'Git/GitHub', level: 90 },
-        { name: 'JWT', level: 85 },
-        { name: 'Docker', level: 75 },
+        { name: 'Déploiement (Vercel, Render)', level: 85 },
       ],
     },
   ];
+
+  const skillIcon = (name: string) => {
+    switch (name) {
+      case 'React':
+        return <Code2 size={18} className="text-cyan-600" />;
+      case 'Next.js':
+        return <Code size={18} className="text-gray-700 dark:text-gray-300" />;
+      case 'Tailwind CSS':
+        return <Wind size={18} className="text-cyan-600" />;
+      case 'HTML / CSS / JavaScript':
+        return <Code size={18} className="text-gray-700 dark:text-gray-300" />;
+      case 'Node.js':
+        return <Server size={18} className="text-emerald-600" />;
+      case 'API REST':
+        return <Cloud size={18} className="text-cyan-600" />;
+      case 'JWT / Auth':
+        return <ShieldCheck size={18} className="text-indigo-600" />;
+      case 'PostgreSQL':
+        return <Database size={18} className="text-blue-600" />;
+      case 'MySQL':
+        return <Database size={18} className="text-yellow-600" />;
+      case 'Git/GitHub':
+        return <GitBranch size={18} className="text-gray-700 dark:text-gray-300" />;
+      case 'Déploiement (Vercel, Render)':
+        return <Cloud size={18} className="text-cyan-600" />;
+      default:
+        return <Code size={18} className="text-gray-700 dark:text-gray-300" />;
+    }
+  };
 
   return (
     <section id="competences" className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -63,8 +90,13 @@ export default function Skills() {
               <div className="space-y-5">
                 {category.skills.map((skill, skillIdx) => (
                   <div key={skillIdx}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
+                    <div className="flex justify-between mb-2 items-center">
+                      <span className="text-gray-700 dark:text-gray-300 font-medium flex items-center gap-2">
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-gray-100 dark:bg-gray-800">
+                          {skillIcon(skill.name)}
+                        </span>
+                        {skill.name}
+                      </span>
                       <span className="text-cyan-600 font-semibold">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-2.5 overflow-hidden">

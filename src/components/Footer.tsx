@@ -84,11 +84,13 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 dark:border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 dark:text-gray-400 text-sm">
-            &copy; {currentYear} Bigmo (AGNIDE Mohamed Fadul). Tous droits réservés.
+            © Bigmo — AGNIDE Mohamed Fadul — Tous droits réservés
           </p>
-          <p className="text-gray-400 dark:text-gray-400 text-sm flex items-center gap-1">
-            Créé avec <Heart size={16} className="text-red-500 dark:text-red-400" /> et React
+          <p className="text-gray-400 dark:text-gray-400 text-sm">
+            Email : <a href="mailto:fadulagnide01@gmail.com" className="hover:text-cyan-400 transition-colors">fadulagnide01@gmail.com</a> · GitHub : <a href="https://github.com/Big-Mo777" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Big-Mo777</a>
           </p>
+          <span className="sr-only">{currentYear}</span>
+          <span className="sr-only"><Heart size={16} /></span>
         </div>
       </div>
     </footer>

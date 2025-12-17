@@ -36,7 +36,7 @@ export default function About() {
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
-            <div className="aspect-square bg-gradient-to-br from-cyan-100 to-gray-100 dark:from-cyan-900/30 dark:to-gray-900 rounded-2xl flex items-center justify-center">
+            <div className="aspect-square bg-gradient-to-br from-cyan-100 to-gray-100 dark:from-cyan-900/30 dark:to-gray-900 rounded-2xl flex items-center justify-center transition-transform duration-300 hover:rotate-1 hover:scale-[1.02] shadow-sm hover:shadow-md">
               <div className="text-center">
                 <div className="text-8xl mb-4">👨‍💻</div>
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">Bigmo</div>
@@ -45,18 +45,17 @@ export default function About() {
           </div>
 
           <div>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-              Passionné par le développement web depuis plusieurs années, je me spécialise dans la création
-              d'applications modernes et performantes qui résolvent des problèmes concrets.
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed animate-fade-in">
+              Je suis Bigmo (AGNIDE Mohamed Fadul), développeur fullstack passionné par la création d’applications concrètes et utiles.
             </p>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-              Mon approche combine expertise technique et vision business pour créer des solutions
-              qui génèrent de la valeur réelle. Je ne me contente pas d'écrire du code : je construis
-              des produits qui fonctionnent.
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed animate-fade-in">
+              J’ai une expérience pratique avec React, Next.js, Node.js, et Tailwind CSS.
             </p>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              Que vous soyez une startup qui lance son MVP ou une entreprise établie qui modernise
-              son infrastructure, je mets mon expertise à votre service pour concrétiser votre vision.
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed animate-fade-in">
+              Mon approche est simple : résoudre des problèmes réels, avec du code propre, maintenable et évolutif.
+            </p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed animate-fade-in">
+              Je combine sens du design, logique de développement et souci du détail pour livrer des expériences digitales de qualité.
             </p>
           </div>
         </div>
@@ -65,7 +64,7 @@ export default function About() {
           {values.map((value, index) => (
             <div
               key={index}
-              className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-cyan-50 dark:hover:bg-gray-800 transition-colors duration-200 border border-gray-200 dark:border-gray-800"
+              className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-cyan-50 dark:hover:bg-gray-800 transition-colors duration-200 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md hover:-translate-y-1 transition-transform"
             >
               <div className="w-12 h-12 bg-cyan-600 text-white rounded-lg flex items-center justify-center mb-4">
                 {value.icon}
