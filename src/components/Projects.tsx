@@ -15,8 +15,8 @@ export default function Projects() {
       title: 'Plateforme E-commerce',
       description: 'Solution e-commerce complète avec gestion de catalogue produits, panier d\'achat, système de paiement sécurisé et tableau de bord administrateur.',
       stack: ['Vue.js', 'Django', 'PostgreSQL', 'Stripe', 'Tailwind'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: 'https://project-ecommerce-rho-jet.vercel.app/',
+      githubUrl: 'https://github.com/Big-Mo777/project_ecommerce',
       gradient: 'from-green-500 to-emerald-500',
     },
     {
@@ -36,11 +36,11 @@ export default function Projects() {
       gradient: 'from-purple-500 to-pink-500',
     },
     {
-      title: 'Portfolio Interactif',
-      description: 'Site portfolio moderne et responsive avec animations fluides, formulaire de contact et optimisations SEO avancées.',
-      stack: ['React', 'Tailwind CSS', 'EmailJS'],
-      liveUrl: '#',
-      githubUrl: '#',
+      title: 'Typing as Bigmo',
+      description: 'Site de test de frappe avec fonctionnalités avancées de suivi de performance et de comparaison avec d\'autres utilisateurs.',
+      stack: ['React', 'Tailwind CSS'],
+      liveUrl: 'https://typing-as-bigmo-dly2.vercel.app/',
+      githubUrl: 'https://github.com/Big-Mo777/typing-as-bigmo',
       gradient: 'from-gray-700 to-gray-900',
     },
     {
