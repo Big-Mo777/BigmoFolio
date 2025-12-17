@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
 import { ExternalLink, Github, X } from 'lucide-react';
+import shotEcommerce from './images/Capture d’écran_17-12-2025_113731_project-ecommerce-rho-jet.vercel.app.jpeg';
+import shotReflex from './images/Capture d’écran_17-12-2025_11380_reflex-click-challenge-mvp.vercel.app.jpeg';
+import shotIlluxtra from './images/Capture d’écran_17-12-2025_113832_illuxtra.soarstartup.com.jpeg';
+import shotTyping from './images/Capture d’écran_17-12-2025_113858_typing-as-bigmo-dly2.vercel.app.jpeg';
+import shotFadulTask from './images/Capture d’écran_17-12-2025_113928_fadul-task.vercel.app.jpeg';
 
 export default function Projects() {
   const projects = [
@@ -63,14 +68,12 @@ export default function Projects() {
     }
   };
 
-  const getScreenshotUrl = (url: string) => {
-    try {
-      const u = new URL(url);
-      if (!u.protocol.startsWith('http')) return '';
-      return `https://image.thum.io/get/width/1200/crop/800/noanimate/${encodeURIComponent(url)}`;
-    } catch {
-      return '';
-    }
+  const localScreenshots: Record<string, string> = {
+    'project-ecommerce-rho-jet.vercel.app': shotEcommerce,
+    'reflex-click-challenge-mvp.vercel.app': shotReflex,
+    'illuxtra.soarstartup.com': shotIlluxtra,
+    'typing-as-bigmo-dly2.vercel.app': shotTyping,
+    'fadul-task.vercel.app': shotFadulTask,
   };
 
   const openPreview = (url: string, title: string) => {
@@ -90,15 +93,14 @@ export default function Projects() {
     gradient: string;
     onOpen: () => void;
   }) {
-    const [loaded, setLoaded] = useState(false);
-    const [fallback, setFallback] = useState(false);
-    useEffect(() => {
-      const t = setTimeout(() => {
-        if (!loaded) setFallback(true);
-      }, 2500);
-      return () => clearTimeout(t);
-    }, [loaded]);
-    const shot = getScreenshotUrl(url);
+    useEffect(() => void 0, []);
+    let host = '';
+    try {
+      host = new URL(url).hostname;
+    } catch {
+      host = '';
+    }
+    const shot = host ? localScreenshots[host] : '';
     const hasUrl = url && url !== '#';
 
     return (
@@ -116,36 +118,13 @@ export default function Projects() {
               {hasUrl ? getHostname(url) : 'Aperçu indisponible'}
             </div>
           </div>
-          {hasUrl ? (
-            fallback ? (
-              shot ? (
-                <img
-                  src={shot}
-                  alt={`Aperçu de ${title}`}
-                  loading="lazy"
-                  className="w-full h-[calc(100%-28px)] object-cover object-top bg-white dark:bg-gray-900"
-                />
-              ) : (
-                <div className="w-full h-[calc(100%-28px)] flex items-center justify-center bg-gray-100 dark:bg-gray-900">
-                  <div className="text-center">
-                    <div className="text-gray-700 dark:text-gray-200 text-5xl">💻</div>
-                    <div className="mt-2 text-xs text-gray-600 dark:text-gray-400">Aperçu indisponible</div>
-                  </div>
-                </div>
-              )
-            ) : (
-              <div className="w-full h-[calc(100%-28px)] overflow-hidden bg-white dark:bg-gray-900">
-                <iframe
-                  src={url}
-                  title={title}
-                  className="w-[120%] h-[120%]"
-                  style={{ transform: 'scale(0.85)', transformOrigin: 'top left', pointerEvents: 'none' }}
-                  sandbox="allow-same-origin allow-scripts allow-forms"
-                  loading="lazy"
-                  onLoad={() => setLoaded(true)}
-                />
-              </div>
-            )
+          {hasUrl && shot ? (
+            <img
+              src={shot}
+              alt={`Aperçu de ${title}`}
+              loading="lazy"
+              className="w-full h-[calc(100%-28px)] object-cover object-top bg-white dark:bg-gray-900"
+            />
           ) : (
             <div className="w-full h-[calc(100%-28px)] flex items-center justify-center bg-gray-100 dark:bg-gray-900">
               <div className="text-center">
