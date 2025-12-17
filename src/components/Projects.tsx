@@ -20,11 +20,11 @@ export default function Projects() {
       gradient: 'from-green-500 to-emerald-500',
     },
     {
-      title: 'Application Mobile de Jeu',
-      description: 'Jeu interactif mobile avec système de score en temps réel, classements, achievements et expérience utilisateur fluide.',
+      title: 'Application web de Jeu',
+      description: 'Jeu interactif web avec système de score en temps réel, classements, achievements et expérience utilisateur fluide.',
       stack: ['React Native', 'Go (Gin)', 'MySQL', 'WebSocket'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: 'https://reflex-click-challenge-mvp.vercel.app/',
+      githubUrl: 'https://github.com/Big-Mo777/Reflex_Click_Challenge_MVP',
       gradient: 'from-orange-500 to-red-500',
     },
     {
