@@ -1,4 +1,5 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ExternalLink, Github, X } from 'lucide-react';
 
 export default function Projects() {
   const projects = [
@@ -29,9 +30,9 @@ export default function Projects() {
     {
       title: 'To-Do List Intelligente',
       description: 'Application de gestion de tâches avec authentification, catégorisation intelligente, rappels et synchronisation multi-appareils.',
-      stack: ['React', 'Node.js', 'PostgreSQL', 'JWT'],
-      liveUrl: '#',
-      githubUrl: '#',
+      stack: ['React', 'Node.js', 'superbase', 'JWT'],
+      liveUrl: 'https://fadul-task.vercel.app/',
+      githubUrl: 'https://github.com/Big-Mo777/FadulTask',
       gradient: 'from-purple-500 to-pink-500',
     },
     {
@@ -43,6 +44,112 @@ export default function Projects() {
       gradient: 'from-gray-700 to-gray-900',
     },
   ];
+
+  const [preview, setPreview] = useState<{ url: string; title: string } | null>(null);
+
+  const getHostname = (url: string) => {
+    try {
+      return new URL(url).hostname;
+    } catch {
+      return url;
+    }
+  };
+
+  const getScreenshotUrl = (url: string) => {
+    try {
+      const u = new URL(url);
+      if (!u.protocol.startsWith('http')) return '';
+      return `https://image.thum.io/get/width/1200/crop/800/noanimate/${encodeURIComponent(url)}`;
+    } catch {
+      return '';
+    }
+  };
+
+  const openPreview = (url: string, title: string) => {
+    if (!url || url === '#') return;
+    setPreview({ url, title });
+  };
+  const closePreview = () => setPreview(null);
+
+  function PreviewWindow({
+    url,
+    title,
+    gradient,
+    onOpen,
+  }: {
+    url: string;
+    title: string;
+    gradient: string;
+    onOpen: () => void;
+  }) {
+    const [loaded, setLoaded] = useState(false);
+    const [fallback, setFallback] = useState(false);
+    useEffect(() => {
+      const t = setTimeout(() => {
+        if (!loaded) setFallback(true);
+      }, 2500);
+      return () => clearTimeout(t);
+    }, [loaded]);
+    const shot = getScreenshotUrl(url);
+    const hasUrl = url && url !== '#';
+
+    return (
+      <div
+        className={`h-48 bg-gradient-to-br ${gradient} p-3 flex items-center justify-center cursor-pointer`}
+        onClick={onOpen}
+        title={hasUrl ? 'Ouvrir l’aperçu' : 'Aperçu indisponible'}
+      >
+        <div className="w-full max-w-md h-full rounded-xl shadow-inner ring-1 ring-black/10 dark:ring-white/10 overflow-hidden bg-white/95 dark:bg-gray-900/90">
+          <div className="flex items-center gap-1 px-3 py-2 border-b border-black/10 dark:border-white/10 bg-gray-50 dark:bg-gray-800">
+            <span className="w-2 h-2 rounded-full bg-red-400"></span>
+            <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+            <span className="w-2 h-2 rounded-full bg-green-400"></span>
+            <div className="ml-3 text-xs truncate text-gray-600 dark:text-gray-300">
+              {hasUrl ? getHostname(url) : 'Aperçu indisponible'}
+            </div>
+          </div>
+          {hasUrl ? (
+            fallback ? (
+              shot ? (
+                <img
+                  src={shot}
+                  alt={`Aperçu de ${title}`}
+                  loading="lazy"
+                  className="w-full h-[calc(100%-28px)] object-cover object-top bg-white dark:bg-gray-900"
+                />
+              ) : (
+                <div className="w-full h-[calc(100%-28px)] flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+                  <div className="text-center">
+                    <div className="text-gray-700 dark:text-gray-200 text-5xl">💻</div>
+                    <div className="mt-2 text-xs text-gray-600 dark:text-gray-400">Aperçu indisponible</div>
+                  </div>
+                </div>
+              )
+            ) : (
+              <div className="w-full h-[calc(100%-28px)] overflow-hidden bg-white dark:bg-gray-900">
+                <iframe
+                  src={url}
+                  title={title}
+                  className="w-[120%] h-[120%]"
+                  style={{ transform: 'scale(0.85)', transformOrigin: 'top left', pointerEvents: 'none' }}
+                  sandbox="allow-same-origin allow-scripts allow-forms"
+                  loading="lazy"
+                  onLoad={() => setLoaded(true)}
+                />
+              </div>
+            )
+          ) : (
+            <div className="w-full h-[calc(100%-28px)] flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+              <div className="text-center">
+                <div className="text-gray-700 dark:text-gray-200 text-5xl">💻</div>
+                <div className="mt-2 text-xs text-gray-600 dark:text-gray-400">Aperçu indisponible</div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <section id="projets" className="py-20 bg-white dark:bg-gray-950">
@@ -63,9 +170,12 @@ export default function Projects() {
               key={index}
               className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-800 flex flex-col"
             >
-              <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
-                <div className="text-white text-6xl">💻</div>
-              </div>
+              <PreviewWindow
+                url={project.liveUrl}
+                title={project.title}
+                gradient={project.gradient}
+                onOpen={() => openPreview(project.liveUrl, project.title)}
+              />
 
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -90,6 +200,8 @@ export default function Projects() {
                 <div className="flex gap-4">
                   <a
                     href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors font-medium"
                   >
                     <ExternalLink size={16} />
@@ -97,6 +209,8 @@ export default function Projects() {
                   </a>
                   <a
                     href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center px-4 py-2 bg-gray-900 dark:bg-gray-800 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
                   >
                     <Github size={20} />
@@ -106,6 +220,37 @@ export default function Projects() {
             </div>
           ))}
         </div>
+        {preview && (
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center px-4"
+            onClick={closePreview}
+          >
+            <div
+              className="relative w-full max-w-5xl bg-white dark:bg-gray-900 rounded-xl shadow-2xl ring-1 ring-black/10 dark:ring-white/10 overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-800">
+                <div className="text-sm text-gray-700 dark:text-gray-300 truncate">{getHostname(preview.url)}</div>
+                <button
+                  className="rounded-md p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  onClick={closePreview}
+                  aria-label="Fermer l’aperçu"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="aspect-video bg-white dark:bg-gray-900">
+                <iframe
+                  src={preview.url}
+                  title={preview.title}
+                  className="w-full h-full"
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -12,7 +12,7 @@ export default function Footer() {
     {
       name: 'LinkedIn',
       icon: <Linkedin size={20} />,
-      url: 'https://linkedin.com/in/fadulagnide',
+      url: 'https://linkedin.com/in/Mohamed-Fadul-AGNIDE',
     },
     {
       name: 'Email',
